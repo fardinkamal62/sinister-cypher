@@ -52,8 +52,7 @@ public class Authentication {
     }
 
     private String hashPassword(String password, String salt) {
-        // Simple hashing example using SHA-256
         String saltedPassword = password + salt;
-        return encryptionService.encrypt(saltedPassword); // Encrypt the salted password
+        return encryptionService.encrypt(saltedPassword);
     }
 }
