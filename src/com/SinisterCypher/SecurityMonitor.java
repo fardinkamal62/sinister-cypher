@@ -1,11 +1,8 @@
 package src.com.SinisterCypher;
 
-public class SecurityMonitor {
-    
-    // public SecurityMonitor() {
-    //     System.out.println("Security Monitor System");
-    // }
+import java.util.Scanner;
 
+public class SecurityMonitor {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 

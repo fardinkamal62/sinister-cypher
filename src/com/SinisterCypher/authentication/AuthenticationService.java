@@ -1,19 +1,19 @@
-package com.SinisterCypher.authentication;
+package src.com.SinisterCypher.authentication;
 
-import com.SinisterCypher.storage.EncryptionService;
-import com.SinisterCypher.storage.PasswordStorage;
+import src.com.SinisterCypher.storage.EncryptionService;
+import src.com.SinisterCypher.storage.PasswordStorage;
 
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
-public class Authentication {
+public class AuthenticationService {
     private List<User> users;
     private PasswordStorage passwordStorage;
     private EncryptionService encryptionService;
 
-    public Authentication(PasswordStorage passwordStorage, EncryptionService encryptionService) {
+    public AuthenticationService(PasswordStorage passwordStorage, EncryptionService encryptionService) {
         this.users = new ArrayList<>();
         this.passwordStorage = passwordStorage;
         this.encryptionService = encryptionService;

@@ -1,4 +1,4 @@
-package com.SinisterCypher.authentication;
+package src.com.SinisterCypher.authentication;
 
 public class User {
     private String username;
