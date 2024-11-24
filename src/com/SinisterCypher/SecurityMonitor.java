@@ -1,23 +1,6 @@
 package src.com.SinisterCypher;
 
-import java.util.Scanner;
-
 public class SecurityMonitor {
-    public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-
-        System.out.print("Enter your password: ");
-        String Password = input.nextLine();
-        input.close();
-
-        checkPasswordStrength(Password);
-
-        // String strengthfeedback = checkPasswordStrength(Password);
-        // System.out.println(strengthfeedback);
-        
-    }
-
-
     public static void checkPasswordStrength (String Password){
 
         // Define Criteria
@@ -33,7 +16,7 @@ public class SecurityMonitor {
 
             // Check criteria
             for(char c : Password.toCharArray()){
-                
+
                 if(Character.isUpperCase(c)){
                     hasUppercase = true;
                 }
@@ -72,9 +55,9 @@ public class SecurityMonitor {
             System.out.println("Password length must be at least "+ lengthCriteria +" characters!");
             // return "Password length must be at least "+ lengthCriteria +" characters!";
         }
-        
+
     }
 
 
-    
+
 }
