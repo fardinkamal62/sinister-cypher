@@ -48,6 +48,8 @@ public class PasswordStorage {
             while (resultSet.next()) {
                 String key = resultSet.getString("key");
                 String password = resultSet.getString("password");
+                EncryptionService encryptionService = new EncryptionService();
+                password = encryptionService.decrypt(password);
                 
                 PasswordStorage passwordStorage = new PasswordStorage(key, password, username);
                 passwordList.add(passwordStorage);
@@ -69,7 +71,9 @@ public class PasswordStorage {
     }
 
     public static String retrievePassword(String key, String username) {
-        return dbOperation("read", key, "", username);
+        String encryptedPassword = dbOperation("read", key, "", username);
+        EncryptionService encryptionService = new EncryptionService();
+        return encryptionService.decrypt(encryptedPassword);
     }
 
     public static String dbOperation(String operationString, String key, String password, String username) {
