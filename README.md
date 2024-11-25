@@ -42,7 +42,7 @@ javac -classpath "lib/sqlite-jdbc-3.6.7.jar:lib/jansi-2.4.0.jar" -d build -sourc
 - [Fardin Kamal](https://github.com/fardinkamal62)
 - [Md SIamul Islam Soaib](https://github.com/mdsiamulislam)
 - [Maheer Jishan](https://github.com/MaheerJishan3)
-- Md Hasibul Islam
+- [Md Hasibul Islam](https://github.com/Hasibul-TE)
 
 
 # License
