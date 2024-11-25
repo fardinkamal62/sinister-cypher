@@ -18,19 +18,19 @@ cd sinister-cypher
 Compile the program
 
 ```bash
-javac -classpath lib/*.jar -d build -sourcepath . src/com/SinisterCypher/*.java
+javac -classpath "lib/sqlite-jdbc-3.6.7.jar:lib/jansi-2.4.0.jar" -d build -sourcepath . src/com/SinisterCypher/*.java src/com/SinisterCypher/storage/*.java
 ```
 
 Run the program
 
 ```bash
-java -cp "build:lib/sqlite-jdbc-3.6.7.jar" src.com.SinisterCypher.Main
+java -cp "build:lib/sqlite-jdbc-3.6.7.jar:lib/jansi-2.4.0.jar" src.com.SinisterCypher.Main
 ```
 
 One-liner
 
 ```bash
-javac -classpath lib/*.jar -d build -sourcepath . src/com/SinisterCypher/*.java && java -cp "build:lib/sqlite-jdbc-3.6.7.jar" src.com.SinisterCypher.Main
+javac -classpath "lib/sqlite-jdbc-3.6.7.jar:lib/jansi-2.4.0.jar" -d build -sourcepath . src/com/SinisterCypher/*.java src/com/SinisterCypher/storage/*.java && java -cp "build:lib/sqlite-jdbc-3.6.7.jar:lib/jansi-2.4.0.jar" src.com.SinisterCypher.Main
 ```
 
 # Important Links
