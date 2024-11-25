@@ -18,19 +18,19 @@ cd sinister-cypher
 Compile the program
 
 ```bash
-javac -classpath lib/*.jar -d build -sourcepath . src/com/SinisterCypher/*.java
+javac -classpath "lib/sqlite-jdbc-3.6.7.jar:lib/jansi-2.4.0.jar" -d build -sourcepath . src/com/SinisterCypher/*.java src/com/SinisterCypher/storage/*.java
 ```
 
 Run the program
 
 ```bash
-java -cp "build:lib/sqlite-jdbc-3.6.7.jar" src.com.SinisterCypher.Main
+java -cp "build:lib/sqlite-jdbc-3.6.7.jar:lib/jansi-2.4.0.jar" src.com.SinisterCypher.Main
 ```
 
 One-liner
 
 ```bash
-javac -classpath lib/*.jar -d build -sourcepath . src/com/SinisterCypher/*.java && java -cp "build:lib/sqlite-jdbc-3.6.7.jar" src.com.SinisterCypher.Main
+javac -classpath "lib/sqlite-jdbc-3.6.7.jar:lib/jansi-2.4.0.jar" -d build -sourcepath . src/com/SinisterCypher/*.java src/com/SinisterCypher/storage/*.java && java -cp "build:lib/sqlite-jdbc-3.6.7.jar:lib/jansi-2.4.0.jar" src.com.SinisterCypher.Main
 ```
 
 # Important Links
@@ -42,7 +42,7 @@ javac -classpath lib/*.jar -d build -sourcepath . src/com/SinisterCypher/*.java 
 - [Fardin Kamal](https://github.com/fardinkamal62)
 - [Md SIamul Islam Soaib](https://github.com/mdsiamulislam)
 - [Maheer Jishan](https://github.com/MaheerJishan3)
-- Md Hasibul Islam
+- [Md Hasibul Islam](https://github.com/Hasibul-TE)
 
 
 # License
