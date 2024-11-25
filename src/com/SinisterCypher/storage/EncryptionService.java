@@ -1,28 +1,39 @@
 package src.com.SinisterCypher.storage;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import java.util.Base64;
+
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
 
 public class EncryptionService {
+    private static final String ALGORITHM = "AES";
+    private static final String KEY = "Bar12345Bar12345";
+
     public EncryptionService() {}
 
-    private String hashPasswordString(String str) {
+    public String encrypt(String str) {
         try {
-            MessageDigest md = MessageDigest.getInstance("SHA-256");
-            md.update(str.getBytes());
-            byte[] digest = md.digest();
-            StringBuilder sb = new StringBuilder();
-            for (byte b : digest) {
-                sb.append(String.format("%02x", b));
-            }
-            return sb.toString();
-        } catch (NoSuchAlgorithmException e) {
-            System.out.println("Error hashing password");
+            SecretKeySpec secretKey = new SecretKeySpec(KEY.getBytes(), ALGORITHM);
+            Cipher cipher = Cipher.getInstance(ALGORITHM);
+            cipher.init(Cipher.ENCRYPT_MODE, secretKey);
+            byte[] encryptedBytes = cipher.doFinal(str.getBytes());
+            return Base64.getEncoder().encodeToString(encryptedBytes);
+        } catch (Exception e) {
+            System.out.println("Error encrypting password");
             return null;
         }
     }
 
-    public String encrypt(String str) {
-        return hashPasswordString(str);
+    public String decrypt(String str) {
+        try {
+            SecretKeySpec secretKey = new SecretKeySpec(KEY.getBytes(), ALGORITHM);
+            Cipher cipher = Cipher.getInstance(ALGORITHM);
+            cipher.init(Cipher.DECRYPT_MODE, secretKey);
+            byte[] decryptedBytes = cipher.doFinal(Base64.getDecoder().decode(str));
+            return new String(decryptedBytes);
+        } catch (Exception e) {
+            System.out.println("Error decrypting password");
+            return null;
+        }
     }
 }

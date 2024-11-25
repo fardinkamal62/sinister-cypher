@@ -11,6 +11,8 @@ import java.util.ArrayList;
 
 import src.com.SinisterCypher.authentication.User;
 
+import static org.fusesource.jansi.Ansi.ansi;
+
 public class PasswordStorage {
     private static final String DB_URL = "jdbc:sqlite:database/passwords.db";
 
@@ -48,6 +50,8 @@ public class PasswordStorage {
             while (resultSet.next()) {
                 String key = resultSet.getString("key");
                 String password = resultSet.getString("password");
+                EncryptionService encryptionService = new EncryptionService();
+                password = encryptionService.decrypt(password);
                 
                 PasswordStorage passwordStorage = new PasswordStorage(key, password, username);
                 passwordList.add(passwordStorage);
@@ -69,7 +73,9 @@ public class PasswordStorage {
     }
 
     public static String retrievePassword(String key, String username) {
-        return dbOperation("read", key, "", username);
+        String encryptedPassword = dbOperation("read", key, "", username);
+        EncryptionService encryptionService = new EncryptionService();
+        return encryptionService.decrypt(encryptedPassword);
     }
 
     public static String dbOperation(String operationString, String key, String password, String username) {
@@ -124,7 +130,7 @@ public class PasswordStorage {
             ResultSet resultSet = statement
                     .executeQuery("SELECT password FROM users WHERE username = '" + username + "'");
             if (resultSet.next()) {
-                System.out.println("User already exists");
+                System.out.println(ansi().render("@|bold \nUser already exists|@"));
                 return;
             }
 
@@ -149,7 +155,8 @@ public class PasswordStorage {
             connection.setAutoCommit(false);
 
             if (!resultSet.next()) {
-                System.out.println("User not found");
+                System.out.println(ansi().render("@|red \nUser not found|@"));
+                System.out.println(ansi().render("@|red Invalid Username or Password \n|@"));
                 return null;
             }
             User user = new User(username, resultSet.getString("salt"), password);
