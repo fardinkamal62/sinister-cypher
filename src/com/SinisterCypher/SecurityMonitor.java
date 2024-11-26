@@ -1,7 +1,7 @@
 package src.com.SinisterCypher;
 
 public class SecurityMonitor {
-    public static String checkPasswordStrength (String Password){
+    public static void checkPasswordStrength (String Password){
 
         // Define Criteria
         int lengthCriteria = 8;
@@ -11,9 +11,9 @@ public class SecurityMonitor {
         boolean hasSpecial = false;
         String specialCharacters = "~!@#$%^&*()_+-=[]{}|/,.';:?<>";
 
-        if (password == null || password.trim().isEmpty()) {
-            return "Invalid password: Cannot be empty or null!";
-        }
+        // if (password == null || password.trim().isEmpty()) {
+        //     return "Invalid password: Cannot be empty or null!";
+        // }
 
         // Check length
         if(Password.length() >= lengthCriteria){
@@ -38,26 +38,26 @@ public class SecurityMonitor {
 
             // Check strength
             if(hasUppercase && hasLowercase && hasDigit && hasSpecial){
-                // System.out.println("It is very strong password!");
-                return "It is very strong password!";
+                System.out.println("It is very strong password!");
+                // return "It is very strong password!";
             }
             else if(hasUppercase && hasLowercase && hasDigit){
-                // System.out.println("It is strong password!");
-                return "It is strong password!";
+                System.out.println("It is strong password!");
+                // return "It is strong password!";
             }
             else if(hasUppercase && hasLowercase && hasSpecial){
-                // System.out.println("It is strong password!");
-                return "It is strong password!";
+                System.out.println("It is strong password!");
+                // return "It is strong password!";
             }
             else{
-                // System.out.println("It is weak password!");
-                return "It is weak password!";
+                System.out.println("It is weak password!");
+                // return "It is weak password!";
             }
 
         }
         else{
-            // System.out.println("Password length must be at least "+ lengthCriteria +" characters!");
-            return "Password length must be at least "+ lengthCriteria +" characters!";
+            System.out.println("Password length must be at least "+ lengthCriteria +" characters!");
+            // return "Password length must be at least "+ lengthCriteria +" characters!";
         }
 
     }
