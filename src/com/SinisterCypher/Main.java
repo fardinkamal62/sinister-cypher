@@ -124,7 +124,6 @@ class Main {
         }
     }
 
-    /*
     private static void checkPasswordStrength(User user, Scanner scanner) {
         System.out.println(ansi().render("@|bold Enter Password or Press Enter to Check User Password: |@"));
         String password = scanner.nextLine();
@@ -134,24 +133,6 @@ class Main {
         }
         SecurityMonitor.checkPasswordStrength(user.getHashedPassword());
     }
-    */
 
-    //
-    private static void checkPasswordStrength(User user, Scanner scanner) {
-    System.out.println("Enter Password or Press Enter to Check User Password:");
-    String password = scanner.nextLine();
-
-    if (password.isEmpty()) {
-        password = user.getHashedPassword();
-    }
-
-    String strength = SecurityMonitor.checkPasswordStrength(password);
-    System.out.println("Password Strength: " + strength);
-        
-    }
-
-    //
-
-    
 
 }
