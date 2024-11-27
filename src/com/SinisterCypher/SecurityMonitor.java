@@ -1,7 +1,7 @@
 package src.com.SinisterCypher;
 
 public class SecurityMonitor {
-    public static void checkPasswordStrength (String password){
+    public static void checkPasswordStrength (String Password){
 
         // Define Criteria
         int lengthCriteria = 8;
@@ -16,10 +16,10 @@ public class SecurityMonitor {
         // }
 
         // Check length
-        if(password.length() >= lengthCriteria){
+        if(Password.length() >= lengthCriteria){
 
             // Check criteria
-            for(char c : password.toCharArray()){
+            for(char c : Password.toCharArray()){
 
                 if(Character.isUpperCase(c)){
                     hasUppercase = true;
