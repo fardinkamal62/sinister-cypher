@@ -46,6 +46,7 @@ class Main {
             System.out.println("1. Store Password");
             System.out.println("2. Retrieve Password");
             System.out.println("3. Check Password Strength");
+            System.out.println("4. Generate Password");
             System.out.println("Q. Exit");
             System.out.print(ansi().render("@|bold Enter Choice: |@"));
 
@@ -60,6 +61,9 @@ class Main {
                     break;
                 case "3":
                     checkPasswordStrength(user, scanner);
+                    break;
+                case "4":
+                    generatePassword(scanner, user);
                     break;
                 case "q":
                 case "Q":
@@ -134,5 +138,11 @@ class Main {
         SecurityMonitor.checkPasswordStrength(user.getHashedPassword());
     }
 
+    private static void generatePassword(Scanner scanner, User user) {
+        System.out.println(ansi().render("@|bold How many character do you want for the password? |@"));
+        int characters = scanner.nextInt();
+
+        PasswordGenerator passwordGenerator = new PasswordGenerator(characters, user, scanner);
+    }
 
 }
